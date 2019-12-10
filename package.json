@@ -1,0 +1,23 @@
+{
+  "name": "dm124finalwork",
+  "version": "1.0.0",
+  "description": "DM124 final work repository.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariomacedo/dm124FinalWork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariomacedo/dm124FinalWork/issues"
+  },
+  "homepage": "https://github.com/mariomacedo/dm124FinalWork#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1"
+  }
+}
