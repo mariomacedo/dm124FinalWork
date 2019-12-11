@@ -3,7 +3,8 @@ const User = require('../model/User');
 const {registerValidation, loginValidation} = require('../validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const verify = require('./verifyToken');
+const _ = require('lodash');
 
 router.post('/register', async (req, res) => {
     const {error} = registerValidation(req.body);
@@ -46,6 +47,13 @@ router.post('/login', async (req, res) => {
     // Creat and assign token
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send({message: 'Logged in', token: token});  
+});
+
+router.get('/all', verify, async (req, res) => {
+    const usersDb = await User.find();
+    let users = new Array();
+    usersDb.forEach(user => users.push(_.pick(user, ['_id', 'name', 'email'])));
+    res.send(users);
 });
 
 module.exports = router;

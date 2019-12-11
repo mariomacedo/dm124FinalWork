@@ -21,5 +21,25 @@ const loginValidation = (data) => {
     return schema.validate(data);
 }
 
+const shipmentValidation = (data) => {
+    const schema = Joi.object({
+        orderId: Joi.string().min(6).required(),
+        clientId: Joi.string().min(6).required(),
+        receiverName: Joi.string().min(6).required(),
+        receiverCpf: Joi.number().min(11).max(11).required(),
+        isReceiverTheBuyer: Joi.bollean().required(),
+        coordinates: Joi.array().items(Joi.number()),
+    });
+
+    return schema.validate(data);
+}
+
+const orderValidation = (data) => {
+    const schema = Joi.schema({
+        clientId : Joi.string().min(6).required(),
+        total: Joi.number().min(0).required()
+    });
+}
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;

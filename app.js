@@ -10,12 +10,14 @@ app.use(bodyParser.json());
 
 // Import Routes
 const authRoute = require('./routes/auth');
+const shipmentRoute = require('./routes/shipment');
 
 // Middleware
 app.use(express.json());
 
 // Route Middleware
 app.use('/api/user', authRoute);
+app.use('/api/shipment', shipmentRoute);
 
 // Connect to DB
 mongoose.connect(
