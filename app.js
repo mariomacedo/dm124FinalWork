@@ -11,11 +11,13 @@ app.use(bodyParser.json());
 // Import Routes
 const authRoute = require('./routes/auth');
 const shipmentRoute = require('./routes/shipment');
+const documentationRoute = require('./routes/documentation');
 
 // Middleware
 app.use(express.json());
 
 // Route Middleware
+app.use('/', documentationRoute);
 app.use('/api/user', authRoute);
 app.use('/api/shipment', shipmentRoute);
 
