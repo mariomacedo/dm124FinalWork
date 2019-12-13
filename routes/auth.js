@@ -80,12 +80,12 @@ router.get('/all', async (req, res) => {
 });
 
 /**
- * Logged user only. Update a user.
+ * Logged user only. Update an user.
  * @route PATCH /user/{id}
  * @group User - Operations about user
  * @param {string} id.path.required
  * @param {User.model} body.body.required
- * @returns {object} 200 - An array of user
+ * @returns {object} 200 - Message
  * @returns {Error}  default - Unexpected error
  */
 router.patch('/:id', verify, async(req, res) => {
@@ -103,15 +103,14 @@ router.patch('/:id', verify, async(req, res) => {
             password: hashPassword
         }}
     );
-       res.send(updatedUser);
+       res.send({msg:'User updated.', userId: req.params.id});
 });
 
 /**
- * Logged user only. Delete a user.
+ * Logged user only. Delete an user.
  * @route DELETE /user/{id}
  * @group User - Operations about user
  * @param {string} id.path.required
- * @param {string} header['auth-token']
  * @returns {object} 200 - Message
  * @returns {Error}  default - Unexpected error
  */

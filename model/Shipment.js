@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
  * @property {string} receiverName.required
  * @property {string} receiverCpf.required
  * @property {boolean} isReceiverTheBuyer.required
- * @property {date} date
- * @property {Array.double} coordinates.required
+ * @property {string} date
+ * @property {Array} coordinates.required
  */
 const shipmentSchema = new mongoose.Schema({
     orderId : {
