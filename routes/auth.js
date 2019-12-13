@@ -50,12 +50,10 @@ router.post('/login', async (req, res) => {
 });
 
 /**
- * This function comment is parsed by doctrine
- * @route GET /api
- * @group foo - Operations about user
- * @param {string} email.query.required - username or email - eg: user@domain
- * @param {string} password.query.required - user's password.
- * @returns {object} 200 - An array of user info
+ * Gets all saved users.
+ * @route GET /user/all
+ * @group User - Operations about user
+ * @returns {object} 200 - An array of user
  * @returns {Error}  default - Unexpected error
  */
 router.get('/all', async (req, res) => {

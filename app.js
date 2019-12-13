@@ -21,8 +21,7 @@ let options = {
         host: 'mariomacedo.ml',
         basePath: '/api',
         produces: [
-            "application/json",
-            "application/xml"
+            "application/json"
         ],
         schemes: ['http'],
         securityDefinitions: {
