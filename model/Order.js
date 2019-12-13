@@ -1,4 +1,11 @@
 const mongoose = require('mongoose');
+
+/**
+ * @typedef Order
+ * @property {string} clientId.required
+ * @property {string} date
+ * @property {total} total.required
+ */
 const orderSchema = new mongoose.Schema({
     clientId : {
         type: String,

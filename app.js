@@ -8,6 +8,38 @@ require('dotenv/config');
 app.use(cors());
 app.use(bodyParser.json());
 
+// Swagger
+const expressSwagger = require('express-swagger-generator')(app);
+
+let options = {
+    swaggerDefinition: {
+        info: {
+            description: 'API Documentation for DM124 final work.',
+            title: 'Mário Macedo - DM124',
+            version: '1.0.0',
+        },
+        host: 'mariomacedo.ml',
+        basePath: '/api',
+        produces: [
+            "application/json",
+            "application/xml"
+        ],
+        schemes: ['http'],
+        securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: "",
+            }
+        }
+    },
+    basedir: './', //app absolute path
+    files: ['./routes/**/*.js', './model/**/*.js'] //Path to the API handle folder
+};
+
+expressSwagger(options)
+
 // Import Routes
 const authRoute = require('./routes/auth');
 const shipmentRoute = require('./routes/shipment');

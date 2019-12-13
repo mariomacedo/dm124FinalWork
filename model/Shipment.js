@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+
+/**
+ * @typedef Shipment
+ * @property {string} orderId.required
+ * @property {string} clientId.required
+ * @property {string} receiverName.required
+ * @property {string} receiverCpf.required
+ * @property {boolean} isReceiverTheBuyer.required
+ * @property {date} date
+ * @property {Array.double} coordinates.required
+ */
 const shipmentSchema = new mongoose.Schema({
     orderId : {
         type: String,
