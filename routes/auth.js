@@ -121,4 +121,18 @@ router.delete('/:id', verify, async(req, res) => {
     });
 });
 
+/**
+ * Gets an expecific user.
+ * @route GET /user/:id
+ * @group User - Operations about user
+ * @param {string} id.path.required
+ * @returns {object} 200 - An shipment object
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/:id', async (req, res) => {
+    const user = await User.findOne({_id:req.params.id});
+    if(!user) return res.status(404).send('Error: User could not be found.'); 
+    res.send(user);
+});
+
 module.exports = router;

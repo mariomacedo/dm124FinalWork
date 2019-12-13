@@ -84,4 +84,18 @@ router.delete('/:id', verify, async(req, res) => {
     });
 });
 
+/**
+ * Gets an expecific order.
+ * @route GET /order/:id
+ * @group Order - Operations about usorderer
+ * @param {string} id.path.required
+ * @returns {object} 200 - An order object
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/:id', async (req, res) => {
+    const order = await Order.findOne({_id:req.params.id});
+    if(!order) return res.status(404).send('Error: Order could not be found.'); 
+    res.send(order);
+});
+
 module.exports = router;

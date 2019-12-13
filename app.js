@@ -53,7 +53,9 @@ app.use('/api/shipment', shipmentRoute);
 app.use('/api/order', orderRoute);
 
 // Index
-app.use('/', (req, res) => {res.send('Documentação disponível em: ')})
+app.use('/', (req, res) => {
+    res.redirect('../api-docs')
+});
 
 // Connect to DB
 mongoose.connect(

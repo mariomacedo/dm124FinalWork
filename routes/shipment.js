@@ -96,4 +96,19 @@ router.patch('/:id', verify, async(req, res) => {
        res.send({msg:'Shipment updated.', shipmentId: req.params.id});
 });
 
+
+/**
+ * Gets an expecific shipment.
+ * @route GET /shipment/:id
+ * @group Shipment - Operations about user
+ * @param {string} id.path.required
+ * @returns {object} 200 - An shipment object
+ * @returns {Error}  default - Unexpected error
+ */
+router.get('/:id', async (req, res) => {
+    const shipment = await Shipment.findOne({_id:req.params.id});
+    if(!shipment) return res.status(404).send('Error: Shipment could not be found.'); 
+    res.send(shipment);
+});
+
 module.exports = router;
