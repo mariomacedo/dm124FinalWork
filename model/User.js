@@ -1,11 +1,4 @@
 const mongoose = require('mongoose');
-
-/**
- * @typedef User
- * @property {string} name.required
- * @property {string} email.required
- * @property {string} password.required
- */
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,4 +24,16 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+/**
+ * @typedef User
+ * @property {string} name.required
+ * @property {string} email.required
+ * @property {string} password.required
+ */
+
+/**
+ * @typedef LoginUser
+ * @property {string} email.required
+ * @property {string} password.required
+ */
 module.exports = mongoose.model('User', userSchema);

@@ -18,7 +18,7 @@ let options = {
             title: 'Mário Macedo - DM124',
             version: '1.0.0',
         },
-        host: 'mariomacedo.ml',
+        host: 'localhost:3000',
         basePath: '/api',
         produces: [
             "application/json"
@@ -28,7 +28,7 @@ let options = {
             JWT: {
                 type: 'apiKey',
                 in: 'header',
-                name: 'Authorization',
+                name: 'auth-token',
                 description: "",
             }
         }
