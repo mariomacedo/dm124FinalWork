@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const verify = require('./verifyToken');
 const _ = require('lodash');
 
-router.post('/register', async (req, res) => {
+router.post('/register', verify, async (req, res) => {
     const {error} = registerValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
     res.header('auth-token', token).send({message: 'Logged in', token: token});  
 });
 
-router.get('/all', verify, async (req, res) => {
+router.get('/all', async (req, res) => {
     const usersDb = await User.find();
     let users = new Array();
     usersDb.forEach(user => users.push(_.pick(user, ['_id', 'name', 'email'])));

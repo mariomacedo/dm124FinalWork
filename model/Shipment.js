@@ -20,7 +20,7 @@ const shipmentSchema = new mongoose.Schema({
         max: 255
     },
     receiverCpf: {
-        type: Number,
+        type: String,
         require: true,
         min: 11,
         max: 11

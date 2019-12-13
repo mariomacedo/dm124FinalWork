@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 // Import Routes
 const authRoute = require('./routes/auth');
 const shipmentRoute = require('./routes/shipment');
+const orderRoute = require('./routes/order');
 
 // Middleware
 app.use(express.json());
@@ -18,6 +19,10 @@ app.use(express.json());
 // Route Middleware
 app.use('/api/user', authRoute);
 app.use('/api/shipment', shipmentRoute);
+app.use('/api/order', orderRoute);
+
+// Index
+app.use('/', (req, res) => {res.send('Documentação disponível em: ')})
 
 // Connect to DB
 mongoose.connect(
